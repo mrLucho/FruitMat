@@ -10,13 +10,13 @@ import java.time.LocalDateTime
 class UseCaseCollectorDataHelper:PayOutCollector {
     override fun payAndMarkColPayed(collectorWithHistory: CollectorWithHistory):Float{
 //
-        val  pay = (collectorWithHistory.collectorDto.cages * Constants.cageCapacity + collectorWithHistory.collectorDto.kilograms )* dailyConsts.workerPaymentForKg
+        val  pay = (collectorWithHistory.cages * Constants.cageCapacity + collectorWithHistory.kilograms )* dailyConsts.workerPaymentForKg
         collectorWithHistory.paycheck = pay
         collectorWithHistory.endTime= LocalDateTime.now()
         return pay
     }
     override fun paymentString(collectorWithHistory: CollectorWithHistory):String{
-        return "(${collectorWithHistory.collectorDto.cages * Constants.cageCapacity} + ${collectorWithHistory.collectorDto.kilograms}) * ${dailyConsts.workerPaymentForKg} = ${payAndMarkColPayed(collectorWithHistory)}"
+        return "(${collectorWithHistory.cages * Constants.cageCapacity} + ${collectorWithHistory.kilograms}) * ${dailyConsts.workerPaymentForKg} = ${payAndMarkColPayed(collectorWithHistory)}"
 
     }
     override fun togglePaymentVisibility(collectorWithHistory: CollectorWithHistory): Int {

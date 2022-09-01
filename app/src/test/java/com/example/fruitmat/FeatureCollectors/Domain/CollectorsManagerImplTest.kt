@@ -1,6 +1,5 @@
 package com.example.fruitmat.FeatureCollectors.Domain
 
-import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import com.example.fruitmat.FeatureCollectors.Domain.Manager.CollectorsManagerImpl
 import org.junit.Test

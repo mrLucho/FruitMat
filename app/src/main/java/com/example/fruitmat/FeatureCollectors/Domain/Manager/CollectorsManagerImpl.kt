@@ -1,7 +1,6 @@
 package com.example.fruitmat.FeatureCollectors.Domain.Manager
 
 import com.example.fruitmat.FeatureCollectors.Data.AdditionsHistory
-import com.example.fruitmat.FeatureCollectors.Data.CollectorDto
 import com.example.fruitmat.FeatureCollectors.Data.CollectorWithHistory
 import com.example.fruitmat.common.constants.Constants
 import java.time.LocalDateTime
@@ -16,7 +15,7 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
     }
 
     override fun addCollector(name: String) {
-        mColleectorsLst.add(CollectorWithHistory(CollectorDto(name,0,0f),
+        mColleectorsLst.add(CollectorWithHistory(name,0,0f,
             LocalDateTime.now(),
             LocalDateTime.now(),0f))
     }
@@ -27,21 +26,21 @@ class CollectorsManagerImpl(val mColleectorsLst:ArrayList<CollectorWithHistory>)
          */
 //        mColleectorsLst[position].collectorDto.add(extraCages,extraKg)
         mColleectorsLst[position].additionsHistoryLst.add(AdditionsHistory(extraCages,extraKg))
-        add(mColleectorsLst[position].collectorDto,extraCages,extraKg)
-        validate(mColleectorsLst[position].collectorDto)
+        add(mColleectorsLst[position],extraCages,extraKg)
+        validate(mColleectorsLst[position])
 
     }
-    private fun validate(collectorDto: CollectorDto){
+    private fun validate(collectorDto: CollectorWithHistory){
         if (collectorDto.kilograms >= Constants.cageCapacity){
             val extraCages = collectorDto.kilograms.div(Constants.cageCapacity).toInt()
             collectorDto.kilograms -= extraCages * Constants.cageCapacity
             collectorDto.cages+=extraCages
         }
     }
-    private fun add(collectorDto: CollectorDto, fullCages:Int, kilos:Float){
-        collectorDto.cages += fullCages
-        collectorDto.kilograms += kilos
-        validate(collectorDto)
+    private fun add(collect: CollectorWithHistory, fullCages:Int, kilos:Float){
+        collect.cages += fullCages
+        collect.kilograms += kilos
+        validate(collect)
     }
 
     override fun fillWithDummyData() {

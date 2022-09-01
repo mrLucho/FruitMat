@@ -35,9 +35,9 @@ class RcAdapter(private val managerImpl: CollectorsManagerImpl,val context: Cont
         }
         val currentWorker = managerImpl.getCollector(position)
         holder.imgPay.visibility = UseCaseCollectorDataHelper().togglePaymentVisibility(currentWorker)
-        holder.tvname.text = currentWorker.collectorDto.name
-        holder.tvcages.text = currentWorker.collectorDto.cages.toString()
-        holder.tvKg.text = currentWorker.collectorDto.kilograms.toString()
+        holder.tvname.text = currentWorker.name
+        holder.tvcages.text = currentWorker.cages.toString()
+        holder.tvKg.text = currentWorker.kilograms.toString()
     }
 
     override fun getItemCount(): Int {

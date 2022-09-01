@@ -32,13 +32,13 @@ class UseCaseDisplayCollectorDataImpl(
         mDialogView = LayoutInflater.from(context).inflate(R.layout.add_collected,null)
         val builder = AlertDialog.Builder(context)
             .setView(mDialogView)
-            .setTitle(managerImpl.getCollector(position).collectorDto.name)
+            .setTitle(managerImpl.getCollector(position).name)
             .setCancelable(true)
         return  builder.show()
     }
     fun refreshCurrentHarvest(position: Int){
-        actualCases.text = managerImpl.getCollector(position).collectorDto.cages.toString()
-        actualKg.text = managerImpl.getCollector(position).collectorDto.kilograms.toString()
+        actualCases.text = managerImpl.getCollector(position).cages.toString()
+        actualKg.text = managerImpl.getCollector(position).kilograms.toString()
     }
 
 
@@ -96,9 +96,9 @@ class UseCaseDisplayCollectorDataImpl(
                     ).show()
                     managerImpl.addHarvestedToCollector(position, numCages, numKg)
                     holder.tvcages.text =
-                        currentWorker.collectorDto.cages.toString()
+                        currentWorker.cages.toString()
                     holder.tvKg.text =
-                        currentWorker.collectorDto.kilograms.toString()
+                        currentWorker.kilograms.toString()
                     cages.setText("")
                     kg.setText("")
                     refreshCurrentHarvest(position)

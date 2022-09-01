@@ -22,7 +22,7 @@ class UseCaseAddCollectorImpl(val managerImpl: CollectorsManagerImpl,val recycle
             return false
         }
         for (collector in managerImpl.getCollectorsAsArrayList()){
-            if (collector.collectorDto.name == name){
+            if (collector.name == name){
                 return false
             }
         }
